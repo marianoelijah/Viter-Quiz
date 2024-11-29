@@ -1,3 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    --myred: 227, 24, 55;
+    --myyellow: 215, 168, 58;
+    --accent: 228, 10, 19;
+    --light: 255, 255, 255;
+    --dark: 54, 54, 54;
+    --orange: 244, 173, 76;
+    --primary: 255, 255, 255;
+    --secondary: 245, 245, 245;
+    --line: 223, 223, 223;
+    --alert: 180, 19, 19;
+    --success: 14, 165, 38;
+    --warning: 211, 180, 14;
+    --info: 58, 27, 248;
+    --body: 152, 152, 152;
+  }
+  
+  .dark {
+    --myred: 227, 24, 55;
+    --myyellow: 215, 168, 58;
+    --accent: 228, 10, 19;
+    --light: 64, 64, 64;
+    --primary: 13, 17, 23;
+    --secondary: 1, 4, 9;
+    --dark: 255, 255, 255;
+    --line: 48, 54, 61;
+    --alert: 180, 19, 19;
+    --success: 14, 165, 38;
+    --warning: 211, 180, 14;
+    --info: 58, 27, 248;
+    --body: 188, 188, 188;
+  }
+
+
+@layer base {
+    body {
+        @apply text-body  font-['Nunito'] leading-tight overflow-x-hidden;
+    }
+
+    h1, h2, h3, h4, h5 {
+        @apply font-bold
+    }
+
+    h1 {
+        @apply text-5xl mb-5;
+    }
+    h2 {
+        @apply text-3xl mb-5;
+    }
+    h3 {
+        @apply text-2xl mb-5;
+    }
+    h4 {
+        @apply text-xl mb-5;
+    }
+    h5 {
+        @apply text-lg mb-5;
+    }
+
+    img {
+        @apply block;
+    }
+    
+}
+
+@layer components {
+    .container {
+      @apply max-w-[1800px] mx-auto px-4;
+    }
+    .btn {
+      @apply p-1.5 py-2 border border-transparent flex gap-2 rounded-md transition-all items-center bg-primary text-sm;
+    }
+    .btn:disabled {
+      @apply pointer-events-none opacity-50;
+    }
+  
+    .btn-add,
+    .btn-accent {
+      @apply bg-accent text-white hover:bg-opacity-80;
+    }
+    .btn-alert {
+      @apply bg-accent text-white hover:bg-opacity-80;
+    }
+    .btn-cancel {
+      @apply bg-gray-500 text-white hover:bg-opacity-80;
+    }
+    .btn-warning {
+      @apply bg-warning text-white hover:bg-opacity-80;
+    }
+    .btn-info {
+      @apply bg-info text-white hover:bg-opacity-80;
+    }
+    .table-wrapper {
+      @apply max-h-[69vh] overflow-y-auto overflow-x-hidden;
+    }
+  
+    .table-wrapper table {
+      @apply w-full text-left;
+    }
+  
+    .table-wrapper table thead tr {
+      @apply sticky top-0 bg-primary z-30 py-2.5 h-[41px];
+    }
+  
+    .table-wrapper table tbody tr:hover {
+      @apply shadow-[0px_5px_10px_rgba(var(--light),0.2)];
+    }
+  
+    .table-wrapper table td,
+    .table-wrapper table th {
+      @apply p-1.5 text-sm;
+    }
+  
+    /* .table-wrapper table tbody tr:nth-child(odd) {
+      @apply bg-[#151b25];
+    } */
+  
+    .table-wrapper table tbody tr {
+      @apply bg-secondary;
+    }
+  
+    .table-wrapper table tbody tr:nth-child(odd) {
+      @apply bg-primary;
+    }
+  
+    .table-wrapper table tbody tr td:first-child {
+      @apply w-[30px];
+    }
+    .table-wrapper table tbody tr td:nth-child(2) {
+      @apply w-[100px];
+    }
+    .loading-bar {
+      @apply overflow-hidden relative;
+    }
+    .loading-bar::after {
+      @apply content-[''] absolute top-0 left-0 w-full h-full  bg-skeleton animate-loading;
+    }
+    .layout-main {
+      @apply h-screen bg-primary;
+    }
+    .layout-division {
+      @apply flex h-full;
+    }
+  
+    .layout-division aside {
+      @apply bg-secondary max-w-[200px] w-full;
+    }
+  
+    .layout-division header {
+      @apply bg-secondary;
+    }
+  
+    .layout-division main {
+      @apply w-full h-full grid grid-rows-[auto,_1fr,_auto];
+    }
+    .table-action {
+      @apply flex gap-2 justify-end;
+    }
+    .table-action svg {
+      @apply w-[70%] hover:stroke-accent;
+    }
+    .tooltip {
+      @apply relative;
+    }
+    .tooltip::before {
+      @apply content-[attr(data-tooltip)] absolute -top-5 left-1/2 -translate-x-1/2 p-1.5
+       bg-black bg-opacity-80 px-2.5 text-[10px] rounded-md 
+       transition-all text-white leading-none opacity-0 pointer-events-none z-30;
+    }
+  
+    .tooltip:hover::before {
+      @apply opacity-100;
+    }
+  
+    /* .layout-division main > div {
+      @apply bg-secondary;
+    } */
+  
+    .input-wrap {
+      @apply mb-2 relative;
+    }
+    .input-wrap input,
+    .input-wrap textarea,
+    .input-wrap select {
+      @apply px-2 py-1 w-full outline-none border border-line bg-primary text-body rounded-md focus:border-info;
+    }
+  
+    .input-wrap input:disabled,
+    .input-wrap textarea:disabled,
+    .input-wrap select:disabled {
+      @apply pointer-events-none opacity-60;
+    }
+  
+    .input-wrap textarea {
+      @apply resize-none h-[100px];
+    }
+  
+    .input-wrap label {
+      @apply text-xs;
+    }
+   
+    .input-wrap span.error-show {
+      @apply absolute top-1 right-0 text-alert text-xs italic;
+    }
+    .input-wrap:has(.error-show) label {
+      @apply text-alert;
+    }
+    .input-wrap:has(.error-show) input,
+    .input-wrap:has(.error-show) textarea,
+    .input-wrap:has(.error-show) select {
+      @apply border-alert animate-shake;
+    } 
+  
+    .input-photo-wrap:has(.error-show) {
+      @apply border border-alert animate-shake;
+    }
+  
+    .input-phot-wrap span.error-show {
+      @apply -top-4;
+    }
+  
+  
+  
+  
+  
+  }
+  
+  @layer utilities {
+    .center-all {
+      @apply flex justify-center items-center;
+    }
+  }
+
+
+/* width */
+.custom-scroll aside::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+ /* ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+  } */
+   
+  /* Handle */
+  .custom-scroll::-webkit-scrollbar-thumb {
+    background: #d7a83a; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(42, 66%, 74%); 
+  }
+
+  .spinner circle {
+    fill: none;
+    stroke-width: 6;
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+    animation: dash 1s ease-in-out infinite;
+  }
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+  
+    50% {
+      stroke-dasharray: 90, 200;
+      stroke-dashoffset: -35px;
+    }
+  
+    100% {
+      stroke-dashoffset: -110px;
+    }
+  }

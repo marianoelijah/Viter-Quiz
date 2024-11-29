@@ -4,7 +4,7 @@ export const questions = [
         question_question: "Q1 Mahal niya pa kaya ako?",
         choices: [
             {
-                choice: "Pwede",
+                choice: "Hindi ko Knows",
                 isCorrect: false,
             },
             {
@@ -89,22 +89,22 @@ export const questions = [
     },
     {
         question_aid: 5,
-        question_question: "Q5 Tara walwal?",
+        question_question: "Q5 Tara mag adventure?",
         choices: [
             {
-                choice: "Pwede",
+                choice: "Bawal ako this week eh",
                 isCorrect: false,
             },
             {
-                choice: "Pwede rin",
+                choice: "Hindi ako pwede eh",
                 isCorrect: false,
             },
             {
-                choice: "Oo",
+                choice: "Sige, Let's Go!",
                 isCorrect: true,
             },
             {
-                choice: "Hindi",
+                choice: "Ayoko",
                 isCorrect: false,
             }
         ],
